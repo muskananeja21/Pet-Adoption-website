@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Adoption Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">PetAdopt</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Adopt.html">Adopt</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="AboutUs.html">About Us</a></li>
+                <li><a href="map.html">Map</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Find Your New Best Friend</h1>
+        <p>Adopt a pet and give them a loving home.</p>
+        <button class="cta-button">View Pets</button>
+    </section>
+
+    <section class="pet-list">
+        <h2>Available Pets for Adoption</h2>
+        <div class="pet-container">
+            <div class="pet-card">
+                <img src="https://img.freepik.com/premium-photo/indian-street-brown-dog-rishikesh-india_262388-2321.jpg" alt="Pet 1">
+                <h3>Max</h3>
+                <button class="adopt-button">Adopt Me</button>
+            </div>
+            <div class="pet-card">
+                <img src="https://pawstro.com//wp-content/uploads/2022/06/indiandog.jpg" alt="Pet 2">
+                <h3>Bella</h3>
+                <button class="adopt-button">Adopt Me</button>
+            </div>
+            <div class="pet-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtfnZjep_ysN0Fe-2iGk2ilScS_AFbRLEbTQ&s" alt="Pet 3">
+                <h3>Charlie</h3>
+                <button class="adopt-button">Adopt Me</button>
+            </div>
+            <div class="pet-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNUVgIGiajGePe6ayOyJQV81F7s22uRlTnNg&s" alt="Pet 4">
+                <h3>Luna</h3>
+                <button class="adopt-button">Adopt Me</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- React root element -->
+    <div id="react-root"></div>
+
+    <footer>
+        <p>&copy; 2024 PetAdopt | All Rights Reserved</p>
+    </footer>
+
+    <script type="text/babel">
+        // React Component 1: Greeting Message
+        function Greeting() {
+          return <h1>Welcome to PetAdopt!</h1>;
+        }
+  
+        // React Component 2: Pet of the Day
+        function PetOfTheDay(props) {
+          return (
+            <div>
+              <h2>Pet of the Day: {props.name}</h2>
+              <p>{props.description}</p>
+            </div>
+          );
+        }
+  
+        // React Component 3: Adoption Button
+        function AdoptButton() {
+          const [adopted, setAdopted] = React.useState(false);
+          
+          return (
+            <button onClick={() => setAdopted(!adopted)}>
+              {adopted ? "Already Adopted" : "Adopt Me!"}
+            </button>
+          );
+        }
+  
+        // Rendering Components
+        ReactDOM.render(
+          <div class="adopt-button+">
+            <Greeting />
+            <PetOfTheDay name="Max" description="Max is a playful dog looking for a home." />
+            <AdoptButton />
+          </div>,
+          document.getElementById('react-root')
+        );
+    </script>
+</body>
+</html>

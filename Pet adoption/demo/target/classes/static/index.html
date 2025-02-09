@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Adoption Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <!-- Placeholder for Header -->
+    <div id="header-container"></div>
+
+    <section class="hero">
+        <h1>Find Your New Best Friend</h1>
+        <p>Adopt a pet and give them a loving home.</p>
+        <button class="cta-button">View Pets</button>
+    </section>
+
+    <section class="pet-list">
+        <h2>Available Pets for Adoption</h2>
+        <div class="pet-container">
+            <div class="pet-card">
+                <img src="https://img.freepik.com/premium-photo/indian-street-brown-dog-rishikesh-india_262388-2321.jpg" alt="Pet 1">
+                <h3>Max</h3>
+                <button class="adopt-button">Adopt Me</button>
+            </div>
+            <div class="pet-card">
+                <img src="https://pawstro.com//wp-content/uploads/2022/06/indiandog.jpg" alt="Pet 2">
+                <h3>Bella</h3>
+                <button class="adopt-button">Adopt Me</button>
+            </div>
+            <div class="pet-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtfnZjep_ysN0Fe-2iGk2ilScS_AFbRLEbTQ&s" alt="Pet 3">
+                <h3>Charlie</h3>
+                <button class="adopt-button">Adopt Me</button>
+            </div>
+            <div class="pet-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNUVgIGiajGePe6ayOyJQV81F7s22uRlTnNg&s" alt="Pet 4">
+                <h3>Luna</h3>
+                <button class="adopt-button">Adopt Me</button>
+            </div>
+        </div>
+    </section>
+    <!-- React root element -->
+    <div id="react-root"></div>
+      
+    <!-- Footer Placeholder -->
+    <div id="footer-container"></div>
+
+    <script type="text/babel">
+        // React Component 1: Greeting Message
+        function Greeting() {
+          return <h1>Welcome to PetAdopt!</h1>;
+        }
+  
+        // React Component 2: Pet of the Day
+        function PetOfTheDay(props) {
+          return (
+            <div>
+              <h2>Pet of the Day: {props.name}</h2>
+              <p>{props.description}</p>
+            </div>
+          );
+        }
+  
+        // React Component 3: Adoption Button
+        function AdoptButton() {
+          const [adopted, setAdopted] = React.useState(false);
+          
+          return (
+            <button onClick={() => setAdopted(!adopted)}>
+              {adopted ? "Already Adopted" : "Adopt Me!"}
+            </button>
+          );
+        }
+  
+        // Rendering Components
+        ReactDOM.render(
+          <div>
+            <Greeting />
+            <PetOfTheDay name="Max" description="Max is a playful dog looking for a home." />
+            <AdoptButton />
+          </div>,
+          document.getElementById('react-root')
+        );
+    </script>
+     <!-- Footer Placeholder -->
+<div id="footer-container">
+  <p id="footer-text"></p>
+</div>
+
+    <script>
+        // Fetch and insert Header
+        fetch('/header')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error fetching header:', error));
+
+        // Fetch and insert Footer
+        fetch('/footer')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error fetching footer:', error));
+    </script>
+</body>
+</html>

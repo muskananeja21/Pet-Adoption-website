@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Adoption Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+     <!-- Placeholder for Header -->
+     <div id="header-container"></div>
+
+
+    <section class="hero">
+        <h1>Find Your New Best Friend</h1>
+        <p>Adopt a pet and give them a loving home.</p>
+        <button class="cta-button">View Pets</button>
+    </section>
+
+    <section class="pet-list">
+        <h2>Available Pets for Adoption</h2>
+        <div class="pet-container">
+            <!-- Your pet cards here -->
+        </div>
+    </section>
+
+    <!-- Interactive Map Section -->
+    <section class="map-section">
+        <h2>Find Pets Near You</h2>
+        <div id="map" style="height: 500px;"></div>
+    </section>
+
+    <footer>
+        <p id="footer-text">
+         <!-- Placeholder for Footer -->
+        <div id="footer-container"></div>
+        </p>
+    </footer>
+
+    <script>
+        // Google Maps Initialization
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                center: {lat: 28.6139, lng: 77.2090} // Replace with dynamic data if available
+            });
+
+            var marker = new google.maps.Marker({
+                position: {lat: 28.7041, lng: 77.1025},
+                map: map,
+                title: 'Pet 1'
+            });
+            // Add more markers for other pets as needed
+        }
+
+        // Fetch and insert Header
+        fetch('/header')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error fetching header:', error));
+
+        // Fetch and insert Footer
+        fetch('/footer')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error fetching footer:', error));
+    </script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+</body>
+</html>
